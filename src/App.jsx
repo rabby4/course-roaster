@@ -1,9 +1,17 @@
 
+import { useState } from 'react'
 import './App.css'
-import Cart from './Components/Cart/Cart'
+import Cart from './Components/Carts/Carts'
 import Courses from './Components/Courses/Courses'
 
 function App() {
+
+  const [carts, setCart] = useState([]);
+
+  const cartHandler = (course) =>{
+    const newCart = [...carts, course];
+    setCart(newCart)
+  }
 
   return (
     <>
@@ -12,8 +20,8 @@ function App() {
           <h1 className='text-4xl text-center font-bold'>Course Registration</h1>
         </div>
         <div className='flex gap-10'>
-          <Courses></Courses>
-          <Cart></Cart>
+          <Courses cartHandler={cartHandler}></Courses>
+          <Cart carts={carts}></Cart>
         </div>
       </div>
       

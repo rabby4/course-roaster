@@ -1,8 +1,12 @@
 
-const Cart = () => {
+
+const Cart = ({cart}) => {
+    const {title} = cart;
     return (
-        <div className="w-1/3 ">
-            <h2 className="text-2xl font-bold">This is cart</h2>
+        <div>
+            <ol className="text-gray-500">
+                <li className="mb-2">{title}</li>
+            </ol>
         </div>
     );
 };
