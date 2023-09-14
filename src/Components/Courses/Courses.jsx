@@ -4,7 +4,7 @@ import Course from "../Course/Course";
 
 
 
-const Courses = ({cartHandler}) => {
+const Courses = ({cartHandler, creditTime, remainingTime}) => {
     const [courses, setCourses] = useState([]);
 
     useEffect(()=>{
@@ -16,7 +16,7 @@ const Courses = ({cartHandler}) => {
     return (
         <div className="w-3/4 grid grid-cols-3 gap-6">
             {
-                courses.map(course => <Course key={course.id} course={course} cartHandler={cartHandler}></Course>)
+                courses.map(course => <Course key={course.id} course={course} cartHandler={cartHandler} creditTime={creditTime} remainingTime={remainingTime}></Course>)
             }
         </div>
     );
