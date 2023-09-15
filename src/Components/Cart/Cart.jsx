@@ -1,18 +1,19 @@
 import PropTypes from 'prop-types';
 
-const Cart = ({cart}) => {
+const Cart = ({cart, index}) => {
     const {title} = cart;
     return (
-        <div>
-            <ol className="text-gray-500">
-                <li className="mb-2">{title}</li>
-            </ol>
-        </div>
+        <>
+            <ul className="text-gray-500 ">
+                <li className="mb-2">{index} {title}</li>
+            </ul>
+        </>
     );
 };
 
 Cart.propTypes = {
-    cart: PropTypes.object
+    cart: PropTypes.object,
+    index: PropTypes.number
 }
 
 export default Cart;

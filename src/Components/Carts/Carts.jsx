@@ -3,13 +3,13 @@ import Cart from "../Cart/Cart";
 
 const Carts = ({carts, creditHr, remainingCredit, prices}) => {
     return (
-        <div className="w-1/4">
+        <div className="lg:w-1/4 md:w-full w-full">
             <div className="bg-white p-7 rounded-xl">
                 <h2 className="text-lg font-semibold text-blue-500 border-b-2 pb-5">Credit Hour Remaining {remainingCredit} hr</h2>
                 <h2 className="text-xl font-bold py-5">Course Name:</h2>
                 <div className="pb-5">
                     {
-                        carts.map((cart, index) => <Cart key={index} cart={cart}></Cart>)
+                        carts.map((cart, index) => <Cart key={index} index={index+1} cart={cart}></Cart>)
                     }
                 </div>
                 <h3 className="border-y-2 py-5">Total Credit Hour : {creditHr}</h3>

@@ -14,7 +14,7 @@ const Courses = ({cartHandler, creditTime, remainingTime, coursePrice}) => {
     },[])
 
     return (
-        <div className="w-3/4 grid grid-cols-3 gap-6">
+        <div className="lg:w-3/4 md:w-full w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
             {
                 courses.map(course => <Course key={course.id} course={course} cartHandler={cartHandler} creditTime={creditTime} remainingTime={remainingTime} coursePrice={coursePrice}></Course>)
             }

@@ -1,8 +1,12 @@
-# React + Vite
+# Assignment Questions and Answers
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 3 Project features:
 
-Currently, two official plugins are available:
+- You will know about Algorithms
+- You will know about Basic Data Structures and Database
+- Several programming languages blog
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Discuss how I manage state in this project.
+
+I did make 4 useState in App.jsx file. each for the selected course, credit hours, remaining credit hours, and prices.
+In the Courses.jsx file, there is 1 useState and 1 useEffect. The useEffect is for fetch JSON data and useState is for storing all data.

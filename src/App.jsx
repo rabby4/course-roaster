@@ -12,40 +12,45 @@ function App() {
   const [remainingCredit, setRemainingCredit] = useState(20);
   const [prices, setPrice] = useState(0);
 
-  console.log(carts)
-
   const cartHandler = (course) =>{
-    console.log(course)
-    const doneCourse = carts.find((item) => item.id === course.id);
+    const doneCourse = carts.find((item) => item.id == course.id);
 
     let intPrice = course.price;
     let intTime = course.timing;
 
+    carts.forEach(item => {
+      intTime = intTime + item.timing;
+    })
+
+    carts.forEach(item => {
+      intPrice = intPrice + item.price
+    })
+
     if(doneCourse){
       return toast(' You already complete the course')
     }else{
-      carts.forEach(item => {
-        intPrice = intPrice + item.price
-      })
-      carts.forEach(item => {
-        intTime = intTime + item.timing;
-      })
-      setCart([...carts, course]);
+      
+      if(intTime > 20){
+        toast('You can not read anymore')
+      }else{
+        setCart([...carts, course]);
+        setCreditHr(intTime);
+        const remainingHr = 20 - intTime;
+        setRemainingCredit(remainingHr);
+        setPrice(intPrice);
+      }
+
     }
-    setCreditHr(intTime)
-    const remainingHr = 20 - intTime;
-    setRemainingCredit(remainingHr);
-    setPrice(intPrice);
-    
-  }
   
+  }
+
   return (
     <>
-      <div className='max-w-7xl mx-auto'>
-        <div className='my-8'>
+      <div className='container mx-auto my-20'>
+        <div className='my-10'>
           <h1 className='text-4xl text-center font-bold'>Course Registration</h1>
         </div>
-        <div className='flex gap-10'>
+        <div className='flex flex-col-reverse md:flex-col-reverse lg:flex-row gap-10 px-10 lg:px-0'>
           <Courses 
           cartHandler={cartHandler}></Courses>
 
