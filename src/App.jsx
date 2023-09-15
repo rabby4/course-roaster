@@ -12,40 +12,33 @@ function App() {
   const [remainingCredit, setRemainingCredit] = useState(20);
   const [prices, setPrice] = useState(0);
 
+  console.log(carts)
+
   const cartHandler = (course) =>{
+    console.log(course)
     const doneCourse = carts.find((item) => item.id === course.id);
+
+    let intPrice = course.price;
+    let intTime = course.timing;
+
     if(doneCourse){
       return toast(' You already complete the course')
     }else{
-      const newCart = [...carts, course];
-      setCart(newCart);
+      carts.forEach(item => {
+        intPrice = intPrice + item.price
+      })
+      carts.forEach(item => {
+        intTime = intTime + item.timing;
+      })
+      setCart([...carts, course]);
     }
+    setCreditHr(intTime)
+    const remainingHr = 20 - intTime;
+    setRemainingCredit(remainingHr);
+    setPrice(intPrice);
     
   }
-
-  const creditTime = time => {
-    const newTime = (creditHr + time);
-    if(newTime > 20){
-      return toast('you can not add more then 20')
-    }else{
-      setCreditHr(newTime);
-    }
-  }
-
-  const remainingTime = time => {
-    const newRemaining = (remainingCredit - time);
-    if(newRemaining < 0){
-      return toast('You can not watch any more')
-    }else{
-      setRemainingCredit(newRemaining)
-    }
-  }
-
-  const coursePrice = price =>{
-    const newPrice = (prices + price);
-    setPrice(newPrice);
-  }
-
+  
   return (
     <>
       <div className='max-w-7xl mx-auto'>
@@ -54,10 +47,7 @@ function App() {
         </div>
         <div className='flex gap-10'>
           <Courses 
-          cartHandler={cartHandler} 
-          creditTime={creditTime} 
-          remainingTime={remainingTime} 
-          coursePrice={coursePrice}></Courses>
+          cartHandler={cartHandler}></Courses>
 
           <Carts 
           carts={carts} 

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const Course = ({course, cartHandler, creditTime, remainingTime, coursePrice}) => {
+const Course = ({course, cartHandler,}) => {
     const {image, title, details, timing, price} = course;
     return (
         <div className="bg-white p-5 space-y-4 rounded-xl flex flex-col ">
@@ -12,7 +12,7 @@ const Course = ({course, cartHandler, creditTime, remainingTime, coursePrice}) =
                 <p>Credit: {timing}hr</p>
             </div>
             <div className="flex">
-            <button onClick={() => {cartHandler(course); creditTime(timing); remainingTime(timing); coursePrice(price)} } className="w-full bg-blue-500 text-white py-3 rounded-lg font-semibold self-end">Select</button>
+            <button onClick={() => {cartHandler(course);} } className="w-full bg-blue-500 text-white py-3 rounded-lg font-semibold self-end">Select</button>
             </div>
         </div>
     );
