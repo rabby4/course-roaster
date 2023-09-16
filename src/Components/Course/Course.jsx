@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { GoBook } from 'react-icons/go';
+import { FiDollarSign } from 'react-icons/fi';
 
 const Course = ({course, cartHandler,}) => {
     const {image, title, details, timing, price} = course;
@@ -9,7 +10,7 @@ const Course = ({course, cartHandler,}) => {
             <h2 className="text-lg font-semibold">{title}</h2>
             <p className="text-sm text-gray-500">{details}</p>
             <div className="flex justify-between text-gray-500">
-                <p>Price: ${price}</p>
+                <p className='flex items-center gap-2'><FiDollarSign /> Price: {price}</p>
                 <p className='flex items-center gap-2'><GoBook /> Credit: {timing}hr</p>
             </div>
             <div className="flex">
